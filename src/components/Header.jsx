@@ -42,6 +42,7 @@ const SearchBarWithIcon = styled.div`
   border-radius: 20px;
   padding: 10px;
   background-color: #ffffff;
+  margin-right: 10px;
 `
 
 const SearchBar = styled.input`

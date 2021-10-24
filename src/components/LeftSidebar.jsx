@@ -6,7 +6,7 @@ const MainContainer = styled.div`
   flex: 2;
   overflow-y: scroll;
   max-height: 100vh;
-  padding: 15px;
+  padding: 20px;
 `
 
 const CategoriesContainer = styled.div`

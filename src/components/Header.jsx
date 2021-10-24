@@ -123,7 +123,6 @@ const Header = () => {
         <ProfilePic src="/assets/person/1.jpeg"></ProfilePic>
         
       </RightHeader>
-      
     </HeaderContainer>
   )
 }

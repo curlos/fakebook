@@ -1,4 +1,7 @@
+import React, { useState, useEffect, useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import axios from 'axios'
 
 const MainContainer = styled.div`
   display: flex;
@@ -65,10 +68,46 @@ const LoginButton = styled.button`
   margin-bottom: 10px;
   cursor: pointer;
   width: 70%;
-  align-self: center;
+`
+const StyledLink = styled(Link)`
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
 `
 
 const Register = () => {
+
+  const history = useHistory()
+
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+
+  const handleRegister = async (e) => {
+    e.preventDefault()
+
+    if (password !== confirmPassword) {
+      return
+    }
+    
+    try {
+      const newUser = {
+        username,
+        email,
+        password
+      }
+  
+      console.log(newUser)
+
+      const response = await axios.post('/auth/register', newUser)
+      console.log(response.data)
+
+      history.push('/login')
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <MainContainer>
@@ -77,13 +116,17 @@ const Register = () => {
         <WebsiteMessage>Connect with friends and the world around you on Fakebook.</WebsiteMessage>
       </LeftContainer>
 
-      <RegisterForm>
-        <RegisterInput type="text" placeholder="Username" required/>
-        <RegisterInput type="email" placeholder="Email" required/>
-        <RegisterInput type="password" placeholder="Password" required/>
-        <RegisterInput type="password" placeholder="Confirm Password" required/>
-        <SignUpButton>Sign Up</SignUpButton>
-        <LoginButton>Log In</LoginButton>
+      <RegisterForm onSubmit={handleRegister}>
+        <RegisterInput type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" required/>
+        <RegisterInput type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required/>
+        <RegisterInput type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required/>
+        <RegisterInput type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password" required/>
+        <SignUpButton onClick={handleRegister}>Sign Up</SignUpButton>
+
+        <StyledLink to="/login">
+          <LoginButton>Log In</LoginButton>
+        </StyledLink>
+        
       </RegisterForm>
     </MainContainer>
   )

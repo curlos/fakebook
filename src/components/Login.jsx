@@ -1,3 +1,5 @@
+import React, { useState, useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const MainContainer = styled.div`
@@ -80,6 +82,12 @@ const ForgotPassword = styled.div`
   }
 `
 
+const StyledLink = styled(Link)`
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+`
+
 const Login = () => {
 
   return (
@@ -94,7 +102,9 @@ const Login = () => {
         <LoginInput type="password" placeholder="Password" required/>
         <LoginButton>Log In</LoginButton>
         <ForgotPassword>Forgot Password?</ForgotPassword>
-        <SignUpButton>Create a New Account</SignUpButton>
+        <StyledLink to="/register">
+          <SignUpButton>Create a New Account</SignUpButton>
+        </StyledLink>
       </LoginForm>
     </MainContainer>
   )

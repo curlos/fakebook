@@ -14,7 +14,7 @@ import SchoolIcon from '@mui/icons-material/School';
 const MainContainer = styled.div`
   flex: 1;
   overflow-y: scroll;
-  max-height: 100vh;
+  max-height: 100%;
   padding: 20px;
 `
 

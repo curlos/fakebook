@@ -34,6 +34,7 @@ const RegisterForm = styled.form`
 
 const RegisterInput = styled.input`
   border: 1px solid lightgray;
+  font-size: 16px;
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 10px;

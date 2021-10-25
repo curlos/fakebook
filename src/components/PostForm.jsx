@@ -74,7 +74,7 @@ const PostForm = () => {
   return (
     <FormContainer>
       <FormText>
-        <UserIcon src="/assets/person/1.jpeg"/>
+        <UserIcon src="/images/person/1.jpeg"/>
         <Textarea placeholder="What's on your mind Safak?"/>
       </FormText>
       

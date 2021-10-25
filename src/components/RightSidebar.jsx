@@ -28,11 +28,11 @@ const RightSidebar = () => {
   return (
     <MainContainer>
       <BirthdayNotification>
-        <BirthdayIcon src="/assets/gift.png" />
+        <BirthdayIcon src="/images/gift.png" />
         <div><strong>Pola Foster</strong> and <strong>3 other friends</strong> have a birthday today.</div>
       </BirthdayNotification>
 
-      <Advertisement src="/assets/ad.png" />
+      <Advertisement src="/images/ad.png" />
       <OnlineFriends />
 
     </MainContainer>

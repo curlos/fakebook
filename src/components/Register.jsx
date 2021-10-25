@@ -100,7 +100,7 @@ const Register = () => {
   
       console.log(newUser)
 
-      const response = await axios.post('/auth/register', newUser)
+      const response = await axios.post('http://localhost:8888/api/auth/register', newUser)
       console.log(response.data)
 
       history.push('/login')

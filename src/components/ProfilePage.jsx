@@ -91,9 +91,9 @@ const ProfilePage = () => {
 
   return (
     <MainContainer>
-      <CoverPicture src="/assets/post/3.jpeg" />
+      <CoverPicture src="/images/post/3.jpeg" />
       <TopContainer>
-        <ProfileIcon src="/assets/person/1.jpeg" />
+        <ProfileIcon src="/images/person/1.jpeg" />
         <UserFullName>Safak Kocaoglu</UserFullName>
       </TopContainer>
       <UserPage>
@@ -114,32 +114,32 @@ const ProfilePage = () => {
             <UserTitle>User friends</UserTitle>
             <FriendList>
               <Friend>
-                <FriendIcon src="/assets/person/1.jpeg" />
+                <FriendIcon src="/images/person/1.jpeg" />
                 <FriendName>Jacob Wharton</FriendName>
               </Friend>
 
               <Friend>
-                <FriendIcon src="/assets/person/1.jpeg" />
+                <FriendIcon src="/images/person/1.jpeg" />
                 <FriendName>Jacob Wharton</FriendName>
               </Friend>
 
               <Friend>
-                <FriendIcon src="/assets/person/1.jpeg" />
+                <FriendIcon src="/images/person/1.jpeg" />
                 <FriendName>Jacob Wharton</FriendName>
               </Friend>
 
               <Friend>
-                <FriendIcon src="/assets/person/1.jpeg" />
+                <FriendIcon src="/images/person/1.jpeg" />
                 <FriendName>Jacob Wharton</FriendName>
               </Friend>
 
               <Friend>
-                <FriendIcon src="/assets/person/1.jpeg" />
+                <FriendIcon src="/images/person/1.jpeg" />
                 <FriendName>Jacob Wharton</FriendName>
               </Friend>
 
               <Friend>
-                <FriendIcon src="/assets/person/1.jpeg" />
+                <FriendIcon src="/images/person/1.jpeg" />
                 <FriendName>Jacob Wharton</FriendName>
               </Friend>
             </FriendList>

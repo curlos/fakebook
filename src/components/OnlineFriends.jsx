@@ -50,7 +50,7 @@ const RightSidebar = () => {
       <Title>Online Friends</Title>
       <Friend>
         <IconContainer>
-          <FriendIcon src="/assets/person/1.jpeg"/>
+          <FriendIcon src="/images/person/1.jpeg"/>
           <OnlineIcon />
         </IconContainer>
         <FriendName>Safak Kocaoglu</FriendName>
@@ -58,7 +58,7 @@ const RightSidebar = () => {
 
       <Friend>
         <IconContainer>
-          <FriendIcon src="/assets/person/1.jpeg"/>
+          <FriendIcon src="/images/person/1.jpeg"/>
           <OnlineIcon />
         </IconContainer>
         <FriendName>Safak Kocaoglu</FriendName>
@@ -66,7 +66,7 @@ const RightSidebar = () => {
 
       <Friend>
         <IconContainer>
-          <FriendIcon src="/assets/person/1.jpeg"/>
+          <FriendIcon src="/images/person/1.jpeg"/>
           <OnlineIcon />
         </IconContainer>
         <FriendName>Safak Kocaoglu</FriendName>

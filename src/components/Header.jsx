@@ -1,3 +1,5 @@
+import React, { useState, useEffect, useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
 import styled from 'styled-components'
 import PersonIcon from '@mui/icons-material/Person';
 import MessageIcon from '@mui/icons-material/Message';
@@ -91,6 +93,10 @@ const SearchBarStyle = {
 
 const Header = () => {
 
+  const { user, isFetching, dispatch } = useContext(AuthContext)
+
+  console.log(user)
+
   return (
     <HeaderContainer>
       <HeaderLogo>Fakebook</HeaderLogo>
@@ -99,9 +105,10 @@ const Header = () => {
           <SearchIcon style={SearchBarStyle}/>
           <SearchBar type="text" placeholder="Search for friend, post or video"></SearchBar>
         </SearchBarWithIcon>
-        <div>Homepage</div>
+        <div>Homepage Hello {user && user.username}</div>
         <div>Timeline</div>
       </MiddleHeader>
+      
 
       <RightHeader>
         <Icons>
@@ -121,7 +128,7 @@ const Header = () => {
           </IconContainer>
         </Icons>
 
-        <ProfilePic src="/assets/person/1.jpeg"></ProfilePic>
+        <ProfilePic src="/images/person/1.jpeg"></ProfilePic>
         
       </RightHeader>
     </HeaderContainer>

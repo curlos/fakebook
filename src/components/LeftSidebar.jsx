@@ -83,47 +83,47 @@ const LeftSidebar = () => {
 
       <AllFriendsContainer>
         <Friend>
-          <FriendIcon src="/assets/person/1.jpeg"/>
+          <FriendIcon src="/images/person/1.jpeg"/>
           <FriendName>Safak Kocaoglu</FriendName>
         </Friend>
 
         <Friend>
-          <FriendIcon src="/assets/person/1.jpeg"/>
+          <FriendIcon src="/images/person/1.jpeg"/>
           <FriendName>Safak Kocaoglu</FriendName>
         </Friend>
 
         <Friend>
-          <FriendIcon src="/assets/person/1.jpeg"/>
+          <FriendIcon src="/images/person/1.jpeg"/>
           <FriendName>Safak Kocaoglu</FriendName>
         </Friend>
 
         <Friend>
-          <FriendIcon src="/assets/person/1.jpeg"/>
+          <FriendIcon src="/images/person/1.jpeg"/>
           <FriendName>Safak Kocaoglu</FriendName>
         </Friend>
 
         <Friend>
-          <FriendIcon src="/assets/person/1.jpeg"/>
+          <FriendIcon src="/images/person/1.jpeg"/>
           <FriendName>Safak Kocaoglu</FriendName>
         </Friend>
 
         <Friend>
-          <FriendIcon src="/assets/person/1.jpeg"/>
+          <FriendIcon src="/images/person/1.jpeg"/>
           <FriendName>Safak Kocaoglu</FriendName>
         </Friend>
 
         <Friend>
-          <FriendIcon src="/assets/person/1.jpeg"/>
+          <FriendIcon src="/images/person/1.jpeg"/>
           <FriendName>Safak Kocaoglu</FriendName>
         </Friend>
 
         <Friend>
-          <FriendIcon src="/assets/person/1.jpeg"/>
+          <FriendIcon src="/images/person/1.jpeg"/>
           <FriendName>Safak Kocaoglu</FriendName>
         </Friend>
 
         <Friend>
-          <FriendIcon src="/assets/person/1.jpeg"/>
+          <FriendIcon src="/images/person/1.jpeg"/>
           <FriendName>Safak Kocaoglu</FriendName>
         </Friend>
       </AllFriendsContainer>

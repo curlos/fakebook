@@ -74,7 +74,7 @@ const Post = () => {
     <PostContainer>
       <PostTop>
         <PostInfo>
-          <UserIcon src="/assets/person/1.jpeg" />
+          <UserIcon src="/images/person/1.jpeg" />
           <UserName>Alex Durden</UserName>
           <TimePosted>1 hour ago</TimePosted>
         </PostInfo>
@@ -86,13 +86,13 @@ const Post = () => {
 
       <PostContent>
         <PostDesc>Every moment is a fresh beginning.</PostDesc>
-        <PostImage src="/assets/post/1.jpeg" />
+        <PostImage src="/images/post/1.jpeg" />
       </PostContent>
 
       <PostFooter>
         <LeftFooter>
-          <LikeButton src="/assets/like.png" />
-          <LikeButton src="/assets/heart.png" />
+          <LikeButton src="/images/like.png" />
+          <LikeButton src="/images/heart.png" />
           <div>62 people liked it</div>
         </LeftFooter>
 

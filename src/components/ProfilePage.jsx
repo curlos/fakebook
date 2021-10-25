@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { useParams, useHistory } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 import styled from 'styled-components'
+import axios from 'axios'
 import PostForm from './PostForm'
 import Posts from './Posts'
 
@@ -17,7 +20,7 @@ const TopContainer = styled.div`
   text-align: center;
   position: relative;
   top: -110px;
-  height: 120px;
+  height: 150px;
 `
 
 const ProfileIcon = styled.img`
@@ -30,7 +33,7 @@ const ProfileIcon = styled.img`
 
 const UserFullName = styled.div`
   font-weight: bold;
-  font-size: 20px;
+  font-size: 24px;
 `
 
 const UserPage = styled.div`
@@ -87,19 +90,80 @@ const FriendName = styled.div`
   margin-top: 5px;
 `
 
+const FollowButtonContainer = styled.div`
+  
+`
+
+const FollowButton = styled.button`
+  font-size: 14px;
+  background-color: #1778F2;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+`
+
 const ProfilePage = () => {
+
+  const { user, isFetching, dispatch } = useContext(AuthContext)
+  const { profilePageID } = useParams()
+
+  const [profilePageInfo, setProfilePageInfo] = useState({
+    user: {},
+    posts: [],
+    friends: []
+  })
+
+  useEffect(() => {
+    const fetchFromAPI = async () => {
+      const userResponse = await axios.get(`http://localhost:8888/api/users/${profilePageID}`)
+      const postsResponse = await axios.get(`http://localhost:8888/api/posts/all/${profilePageID}`)
+      const followersResponse = await axios.get(`http://localhost:8888/api/users/followers/${profilePageID}`)
+      
+      setProfilePageInfo({
+        user: userResponse.data,
+        posts: postsResponse.data,
+        friends: followersResponse.data,
+      })
+    }
+
+    fetchFromAPI()
+  }, [])
+
+  const toggleFollow = async () => {
+    if (!user) {
+      return
+    }
+
+    const body = { userId: user._id }
+
+    const response = await axios.put(`http://localhost:8888/api/users/${profilePageInfo.user._id}/follow`, body)
+
+    setProfilePageInfo({...profilePageInfo, user: response.data.updatedCurrentUser})
+
+    
+  }
+
+  console.log(profilePageInfo.user)
 
   return (
     <MainContainer>
       <CoverPicture src="/images/post/3.jpeg" />
       <TopContainer>
         <ProfileIcon src="/images/person/1.jpeg" />
-        <UserFullName>Safak Kocaoglu</UserFullName>
+        <UserFullName>{profilePageInfo.user.username}</UserFullName>
+        <FollowButtonContainer>
+          <FollowButton onClick={toggleFollow}>
+            {profilePageInfo.user.followers && profilePageInfo.user.followers.includes(user._id) ? 'Follow -' : 'Follow +'}
+          </FollowButton>
+        </FollowButtonContainer>
+        
       </TopContainer>
       <UserPage>
         <LeftContainer>
           <PostForm />
-          <Posts fromProfilePage={true}/>
+          <Posts postsObj={profilePageInfo.posts}/>
         </LeftContainer>
 
         <RightContainer>

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
 import styled from 'styled-components'
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 import LabelIcon from '@mui/icons-material/Label';
@@ -71,10 +72,13 @@ const FormFooter = styled.div`
 
 const PostForm = () => {
 
+  const { user, isFetching, dispatch } = useContext(AuthContext)
+  const IMAGES_URL = 'http://localhost:8888/images/'
+
   return (
     <FormContainer>
       <FormText>
-        <UserIcon src="/images/person/1.jpeg"/>
+        <UserIcon src={user.profilePic ? (IMAGES_URL + user.profilePic) : (IMAGES_URL + 'person/noAvatar.png')}/>
         <Textarea placeholder="What's on your mind Safak?"/>
       </FormText>
       

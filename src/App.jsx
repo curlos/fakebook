@@ -29,7 +29,7 @@ function App() {
         
 
         <Switch>
-          <Route path="/user/:id" exact>
+          <Route path="/profile/:profilePageID" exact>
             <Header />
             <MainBody>
               <LeftSidebar />

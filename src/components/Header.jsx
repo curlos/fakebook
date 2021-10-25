@@ -94,6 +94,7 @@ const SearchBarStyle = {
 const Header = () => {
 
   const { user, isFetching, dispatch } = useContext(AuthContext)
+  const IMAGES_URL = 'http://localhost:8888/images/'
 
   console.log(user)
 
@@ -128,7 +129,7 @@ const Header = () => {
           </IconContainer>
         </Icons>
 
-        <ProfilePic src="/images/person/1.jpeg"></ProfilePic>
+        <ProfilePic src={user.profilePic ? (IMAGES_URL + user.profilePic) : (IMAGES_URL + 'person/noAvatar.png')}></ProfilePic>
         
       </RightHeader>
     </HeaderContainer>

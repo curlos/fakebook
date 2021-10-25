@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 import styled from 'styled-components'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import * as timeago from 'timeago.js';
+import axios from 'axios';
 
 const PostContainer = styled.div`
   padding: 10px;
@@ -68,15 +72,56 @@ const LikeButton = styled.img`
   width: 25px;
 `
 
-const Post = () => {
+const StyledLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: black;
+  text-decoration: none;
+  
+`
+
+const Post = ({ postObj }) => {
+  const history = useHistory()
+  const { user } = useContext(AuthContext)
+  const IMAGES_URL = 'http://localhost:8888/images/'
+
+  const [author, setAuthor] = useState({})
+  const [post, setPost] = useState({...postObj})
+
+  useEffect(() => {
+    const fetchFromAPI = async () => {
+      const response = await axios.get(`http://localhost:8888/api/users/${post.userId}`)
+      setAuthor(response.data)
+    }
+
+    fetchFromAPI()
+  }, [])
+
+  const toggleLike = async () => {
+
+    if (!user) {
+      history.push('/login')
+    }
+
+    console.log(post)
+    console.log(user._id)
+    const body = { userId: user._id}
+    const response = await axios.put(`http://localhost:8888/api/posts/${post._id}/like`, body)
+    console.log(response.data)
+
+    setPost(response.data)
+  }
 
   return (
     <PostContainer>
       <PostTop>
         <PostInfo>
-          <UserIcon src="/images/person/1.jpeg" />
-          <UserName>Alex Durden</UserName>
-          <TimePosted>1 hour ago</TimePosted>
+          <StyledLink to={`/profile/${author._id}`}>
+            <UserIcon src={user.profilePic ? (IMAGES_URL + user.profilePic) : (IMAGES_URL + '/person/noAvatar.png')} />
+            <UserName>{author.username}</UserName>
+          </StyledLink>
+          <TimePosted>{timeago.format(post.createdAt)}</TimePosted>
         </PostInfo>
 
         <div>
@@ -85,19 +130,19 @@ const Post = () => {
       </PostTop>
 
       <PostContent>
-        <PostDesc>Every moment is a fresh beginning.</PostDesc>
-        <PostImage src="/images/post/1.jpeg" />
+        <PostDesc>{post.desc}</PostDesc>
+        {post.img ? <PostImage src={IMAGES_URL + '/person/1.jpeg'} /> : null}
       </PostContent>
 
       <PostFooter>
         <LeftFooter>
-          <LikeButton src="/images/like.png" />
-          <LikeButton src="/images/heart.png" />
-          <div>62 people liked it</div>
+          <LikeButton src={IMAGES_URL + 'like.png'} onClick={toggleLike}/>
+          <LikeButton src={IMAGES_URL + 'heart.png'} onClick={toggleLike}/>
+          <div>{post.likes.length} people liked it</div>
         </LeftFooter>
 
         <div>
-          2 comments
+          {(post.comments && post.comments.length) || 0} comments
         </div>
         
       </PostFooter>

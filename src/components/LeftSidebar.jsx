@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import RssFeedIcon from '@mui/icons-material/RssFeed';
+import ChatIcon from '@mui/icons-material/Chat';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import WorkIcon from '@mui/icons-material/Work';
+import EventIcon from '@mui/icons-material/Event';
+import SchoolIcon from '@mui/icons-material/School';
+
 
 const MainContainer = styled.div`
-  flex: 2;
+  flex: 1;
   overflow-y: scroll;
   max-height: 100vh;
   padding: 20px;
@@ -130,41 +139,39 @@ const categories = [
     getIcon: () => <RssFeedIcon />,
   },
   {
-    name: 'Feed',
-    getIcon: () => <RssFeedIcon />,
+    name: 'Chats',
+    getIcon: () => <ChatIcon />,
   },
   {
-    name: 'Feed',
-    getIcon: () => <RssFeedIcon />,
+    name: 'Videos',
+    getIcon: () => <PlayCircleIcon />,
   },
   {
-    name: 'Feed',
-    getIcon: () => <RssFeedIcon />,
+    name: 'Groups',
+    getIcon: () => <PeopleAltIcon />,
   },
   {
-    name: 'Feed',
-    getIcon: () => <RssFeedIcon />,
+    name: 'Bookmarks',
+    getIcon: () => <BookmarkIcon />,
   },
   {
-    name: 'Feed',
-    getIcon: () => <RssFeedIcon />,
+    name: 'Questions',
+    getIcon: () => <HelpOutlineIcon />,
   },
   {
-    name: 'Feed',
-    getIcon: () => <RssFeedIcon />,
+    name: 'Jobs',
+    getIcon: () => <WorkIcon />,
   },
   {
-    name: 'Feed',
-    getIcon: () => <RssFeedIcon />,
+    name: 'Events',
+    getIcon: () => <EventIcon />,
   },
   {
-    name: 'Feed',
-    getIcon: () => <RssFeedIcon />,
-  },
-  {
-    name: 'Feed',
-    getIcon: () => <RssFeedIcon />,
+    name: 'Courses',
+    getIcon: () => <SchoolIcon />,
   },
 ]
+
+
 
 export default LeftSidebar;

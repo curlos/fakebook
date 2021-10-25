@@ -48,6 +48,7 @@ const PostDesc = styled.div`
 
 const PostImage = styled.img`
   max-height: 500px;
+  text-align: center;
 `
 
 const PostFooter = styled.div`

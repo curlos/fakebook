@@ -1,6 +1,9 @@
+import axios from 'axios'
 import React, { useState, useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import { loginCall } from '../api/auth'
+import { AuthContext } from '../context/AuthContext'
 
 const MainContainer = styled.div`
   display: flex;
@@ -90,6 +93,30 @@ const StyledLink = styled(Link)`
 
 const Login = () => {
 
+  const history = useHistory()
+  const { user, isFetching, dispatch } = useContext(AuthContext)
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  console.log(user)
+
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    
+    const userCredentials = {
+      email,
+      password
+    }
+
+    try {
+      loginCall(userCredentials, dispatch)
+      history.push('/')
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <MainContainer>
       <LeftContainer>
@@ -97,10 +124,10 @@ const Login = () => {
         <WebsiteMessage>Connect with friends and the world around you on Fakebook.</WebsiteMessage>
       </LeftContainer>
 
-      <LoginForm>
-        <LoginInput type="email" placeholder="Email" required/>
-        <LoginInput type="password" placeholder="Password" required/>
-        <LoginButton>Log In</LoginButton>
+      <LoginForm onSubmit={handleLogin}>
+        <LoginInput type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required/>
+        <LoginInput type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required/>
+        <LoginButton onClick={handleLogin}>Log In</LoginButton>
         <ForgotPassword>Forgot Password?</ForgotPassword>
         <StyledLink to="/register">
           <SignUpButton>Create a New Account</SignUpButton>
